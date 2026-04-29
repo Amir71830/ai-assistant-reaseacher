@@ -164,3 +164,6 @@ async def run_research_pipeline(request: ResearchQuery):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+@app.get("/")
+def home():
+    return {"message": "AI Research Assistant is running 🚀"}

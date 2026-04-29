@@ -1,0 +1,26 @@
+services:
+  - type: web_service
+    name: ai-research-assistant-backend
+    env: python
+    region: oregon
+    branch: main
+    root: .
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: HF_TOKEN
+        sync: false
+      - key: DEMO_MODE
+        value: "False"
+
+  - type: static_site
+    name: ai-research-assistant-frontend
+    env: static
+    region: oregon
+    branch: main
+    root: frontend
+    buildCommand: npm install && npm run build
+    publishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://ai-research-assistant-backend.onrender.com/api

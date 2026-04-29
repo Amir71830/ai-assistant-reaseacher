@@ -8,6 +8,8 @@ import {
   ChevronUp, Cpu, Database, Zap, Network, BookOpen, BarChart2
 } from 'lucide-react'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
+
 // ─── Constants ────────────────────────────────────────────────────────────────
 const PIPELINE_STEPS = [
   { id: 'planner',    label: 'Query Expansion',   icon: <Search size={18} /> },
@@ -304,7 +306,7 @@ function App() {
     if (esRef.current) esRef.current.close()
 
     try {
-      const response = await fetch('/api/research/stream', {
+      const response = await fetch(`${API_BASE_URL}/research/stream`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query }),

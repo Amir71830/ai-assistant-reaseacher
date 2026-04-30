@@ -169,6 +169,7 @@ async def run_research_pipeline_stream(request: ResearchQuery):
 async def run_research_pipeline(request: ResearchQuery):
     from fastapi import HTTPException
     raise HTTPException(status_code=308, detail="Use /api/research/stream instead.")
+    
 
 if __name__ == "__main__":
     import uvicorn

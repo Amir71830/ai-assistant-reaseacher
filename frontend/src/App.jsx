@@ -306,7 +306,7 @@ function App() {
     if (esRef.current) esRef.current.close()
 
     try {
-      const response = await fetch(`${API_BASE_URL}/research/stream`, {
+      const response = await fetch(`${API_BASE_URL}/research`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query }),
